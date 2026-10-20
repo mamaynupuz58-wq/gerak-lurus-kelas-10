@@ -39,6 +39,12 @@
         ::-webkit-scrollbar-thumb:hover { background: #38bdf8; }
         @keyframes pulse-glow { 0%, 100% { box-shadow: 0 0 15px rgba(56, 189, 248, 0.4); } 50% { box-shadow: 0 0 30px rgba(56, 189, 248, 0.8); } }
         .glow-effect { animation: pulse-glow 3s infinite; }
+
+        /* PERBAIKAN RESPONSIVE OVERLAY VIDEO HP */
+        #videoOverlay {
+            overflow-y: auto !important;
+            -webkit-overflow-scrolling: touch;
+        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col justify-between">
@@ -61,14 +67,14 @@
             <div class="flex items-center space-x-3 bg-slate-900/80 px-4 py-2 rounded-2xl border border-slate-700/60">
                 <div class="flex items-center space-x-2">
                     <i class="fa-solid fa-user-astronaut text-sky-400"></i>
-                    <input type="text" id="studentName" value="Ketik Nama Di Sini" class="bg-transparent text-sm font-semibold text-slate-200 focus:outline-none focus:border-b focus:border-sky-400 w-28 md:w-36" title="Klik untuk mengubah nama">
+                    <input type="text" id="studentName" value="Nama" class="bg-transparent text-sm font-semibold text-slate-200 focus:outline-none focus:border-b focus:border-sky-400 w-28 md:w-36" title="Klik untuk mengubah nama">
                 </div>
 
                 <div class="h-4 w-px bg-slate-700"></div>
 
                 <div class="flex items-center space-x-2">
                     <i class="fa-solid fa-graduation-cap text-indigo-400"></i>
-                    <input type="text" id="studentClass" value="Kelas, contoh XE5" class="bg-transparent text-sm font-semibold text-slate-200 focus:outline-none focus:border-b focus:border-indigo-400 w-16 md:w-20" title="Klik untuk mengubah kelas">
+                    <input type="text" id="studentClass" value="Kelas" class="bg-transparent text-sm font-semibold text-slate-200 focus:outline-none focus:border-b focus:border-indigo-400 w-16 md:w-20" title="Klik untuk mengubah kelas">
                 </div>
 
                 <div class="h-4 w-px bg-slate-700"></div>
@@ -213,7 +219,7 @@
                                 Browser Anda tidak mendukung pemutar video HTML5.
                             </video>
 
-                            <div id="videoOverlay" class="absolute inset-0 bg-slate-950/95 p-6 z-20 hidden flex flex-col justify-center items-center text-center space-y-4 transition-all duration-300">
+                            <div id="videoOverlay" class="absolute inset-0 bg-slate-950/95 p-3 md:p-6 z-20 hidden flex flex-col justify-start md:justify-center items-center text-center space-y-2 md:space-y-4 overflow-y-auto transition-all duration-300">
                                 <span class="px-3 py-1 bg-amber-500/20 text-amber-300 text-xs font-bold rounded-full border border-amber-500/40 animate-pulse">
                                     ⏸️ Video Diberhentikan — Jawab Tantangan untuk Lanjut
                                 </span>
@@ -661,7 +667,7 @@
         // URL WEB APP GOOGLE APPS SCRIPT
         const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw97KKIZ3yLS_0TLtIOM6Qa5xx1mAhgqRqXs9cf55wyaw8BQRFO2YowD1QA_oR1NYvr/exec";
 
-        let state = { studentName: 'Ketik Nama Di Sini', scoreMisi1: 0, scoreMisi2: 0, scoreMisi3: 0, m1Done: false, m2Done: false, m3Done: false, vaultUnlocked: false };
+        let state = { studentName: 'Nama', scoreMisi1: 0, scoreMisi2: 0, scoreMisi3: 0, m1Done: false, m2Done: false, m3Done: false, vaultUnlocked: false };
         let m2TaskState = { t1: false, t2: false, t3: false };
         let maxWatchedTime = 0;
         let isAdjustingTime = false;
@@ -1389,7 +1395,7 @@
         }
 
         function openReportModul() {
-            state.studentName = document.getElementById('studentName').value || 'Ketik Nama Di Sini';
+            state.studentName = document.getElementById('studentName').value || 'Nama';
             document.getElementById('repName').innerText = state.studentName;
             document.getElementById('repDate').innerText = new Date().toLocaleDateString('id-ID');
             document.getElementById('repTotalScore').innerText = (state.scoreMisi1 + state.scoreMisi2 + state.scoreMisi3) + " XP";
