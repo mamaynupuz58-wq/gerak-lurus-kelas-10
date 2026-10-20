@@ -59,25 +59,20 @@
             </div>
 
             <div class="flex items-center space-x-3 bg-slate-900/80 px-4 py-2 rounded-2xl border border-slate-700/60">
-                <!-- INPUT NAMA SISWA -->
                 <div class="flex items-center space-x-2">
                     <i class="fa-solid fa-user-astronaut text-sky-400"></i>
-                    <input type="text" id="studentName" value="Penjelajah Muda" class="bg-transparent text-sm font-semibold text-slate-200 focus:outline-none focus:border-b focus:border-sky-400 w-28 md:w-36" title="Klik untuk mengubah nama">
+                    <input type="text" id="studentName" value="Ketik Nama Di Sini" class="bg-transparent text-sm font-semibold text-slate-200 focus:outline-none focus:border-b focus:border-sky-400 w-28 md:w-36" title="Klik untuk mengubah nama">
                 </div>
 
-                <!-- GARIS PEMISAH -->
                 <div class="h-4 w-px bg-slate-700"></div>
 
-                <!-- INPUT KELAS -->
                 <div class="flex items-center space-x-2">
                     <i class="fa-solid fa-graduation-cap text-indigo-400"></i>
                     <input type="text" id="studentClass" value="10E1" class="bg-transparent text-sm font-semibold text-slate-200 focus:outline-none focus:border-b focus:border-indigo-400 w-16 md:w-20" title="Klik untuk mengubah kelas">
                 </div>
 
-                <!-- GARIS PEMISAH -->
                 <div class="h-4 w-px bg-slate-700"></div>
 
-                <!-- SKOR XP -->
                 <div class="flex items-center space-x-1.5 text-amber-400 font-bold text-sm">
                     <i class="fa-solid fa-star"></i>
                     <span id="totalScore">0</span> <span class="text-xs text-slate-400">XP</span>
@@ -120,12 +115,25 @@
                     <p class="text-slate-300 text-sm md:text-base leading-relaxed">
                         Selesaikan 3 Misi Petualangan Fisika untuk mengumpulkan kode rahasia dan meloloskan diri dari Ruang Lab Kinematika!
                     </p>
-                    <div class="flex flex-wrap gap-3 pt-2">
+                    
+                    <!-- TOMBOL MATERI GLB & GLBB DI DASHBOARD -->
+                    <div class="flex flex-wrap gap-3 pt-2 items-center">
                         <button onclick="switchTab('misi1')" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-sky-500 to-indigo-600 text-white font-bold text-sm shadow-lg hover:shadow-sky-500/40 hover:scale-105 transition">
                             Mulai Petualangan Misi 1 <i class="fa-solid fa-arrow-right ml-2"></i>
                         </button>
-                        <button onclick="openReportModal()" class="px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-sm border border-slate-600 transition">
-                            <i class="fa-solid fa-file-invoice mr-2 text-emerald-400"></i> Laporan Belajar
+                        
+                        <!-- TOMBOL BUKA GAMBAR MATERI GLB -->
+                        <button onclick="openMateriModal('glb')" class="px-4 py-2.5 rounded-xl bg-sky-500/20 hover:bg-sky-500/30 text-sky-300 font-bold text-sm border border-sky-500/40 transition flex items-center gap-2 shadow">
+                            <i class="fa-solid fa-image text-sky-400"></i> Gambar Materi GLB
+                        </button>
+                        
+                        <!-- TOMBOL BUKA GAMBAR MATERI GLBB -->
+                        <button onclick="openMateriModal('glbb')" class="px-4 py-2.5 rounded-xl bg-indigo-500/20 hover:bg-indigo-500/30 text-indigo-300 font-bold text-sm border border-indigo-500/40 transition flex items-center gap-2 shadow">
+                            <i class="fa-solid fa-image text-indigo-400"></i> Gambar Materi GLBB
+                        </button>
+
+                        <button onclick="openReportModal()" class="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-sm border border-slate-600 transition">
+                            <i class="fa-solid fa-file-invoice mr-1 text-emerald-400"></i> Laporan Belajar
                         </button>
                     </div>
                 </div>
@@ -263,7 +271,6 @@
                                 <span id="misi1ScoreText" class="font-extrabold text-amber-400 text-sm">0 / 100 XP</span>
                             </div>
                             <p class="text-[11px] text-slate-400 leading-relaxed">Selesaikan kelima kuis otomatis di dalam video untuk mengumpulkan total 100 XP!</p>
-                            <!-- 📍 TOMBOL ULANGI MISI 1 -->
                             <button onclick="resetMisi1()" class="w-full mt-2 py-2 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 font-bold text-xs border border-amber-500/40 transition flex items-center justify-center gap-1.5">
                                 <i class="fa-solid fa-rotate-left"></i> Ulangi Misi 1 (Coba Lagi)
                             </button>
@@ -273,26 +280,32 @@
             </div>
         </section>
 
-        <!-- SECTION: MISI 2 (LABORATORIUM GERAK) -->
+        <!-- SECTION: MISI 2 (LABORATORIUM GERAK & 3 PERTANYAAN TERCENTANG OTOMATIS) -->
         <section id="sec-misi2" class="tab-content hidden space-y-6">
             <div class="glass-panel p-6 rounded-3xl border border-indigo-500/30">
                 <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4">
                     <div>
                         <span class="text-xs font-bold text-indigo-400 uppercase tracking-widest">Misi 2 — Laboratorium Gerak Virtual</span>
                         <h2 class="text-2xl font-extrabold text-white">Simulasi Mobil Virtual GLB & GLBB</h2>
-                        <p class="text-xs text-slate-400 mt-1">Atur variabel posisi awal (x<sub>0</sub>), kecepatan (v<sub>0</sub>), dan percepatan (a). Amati grafik realtime!</p>
+                        <p class="text-xs text-slate-400 mt-1">Gunakan tombol Preset di kanan untuk mengatur parameter mobil, lalu jawab 3 tantangan di bawah ini!</p>
                     </div>
                     <div class="flex flex-wrap gap-2 text-xs">
-                        <button onclick="setPreset('glb')" class="px-3 py-1.5 rounded-xl bg-sky-500/20 text-sky-300 border border-sky-500/30 font-bold hover:bg-sky-500/30">Preset GLB (a = 0)</button>
-                        <button onclick="setPreset('glbb_acc')" class="px-3 py-1.5 rounded-xl bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-bold hover:bg-emerald-500/30">Preset GLBB Dipercepat</button>
-                        <button onclick="setPreset('glbb_dec')" class="px-3 py-1.5 rounded-xl bg-rose-500/20 text-rose-300 border border-rose-500/30 font-bold hover:bg-rose-500/30">Preset Pengereman (a &lt; 0)</button>
+                        <button onclick="setPreset('glb')" class="px-3 py-1.5 rounded-xl bg-sky-500/20 text-sky-300 border border-sky-500/30 font-bold hover:bg-sky-500/30 shadow">
+                            <i class="fa-solid fa-bolt mr-1"></i> Preset GLB (a = 0)
+                        </button>
+                        <button onclick="setPreset('glbb_acc')" class="px-3 py-1.5 rounded-xl bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-bold hover:bg-emerald-500/30 shadow">
+                            <i class="fa-solid fa-gauge-high mr-1"></i> Preset GLBB Dipercepat
+                        </button>
+                        <button onclick="setPreset('glbb_dec')" class="px-3 py-1.5 rounded-xl bg-rose-500/20 text-rose-300 border border-rose-500/30 font-bold hover:bg-rose-500/30 shadow">
+                            <i class="fa-solid fa-triangle-exclamation mr-1"></i> Preset Pengereman
+                        </button>
                     </div>
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
                     <div class="lg:col-span-4 glass-card p-5 rounded-2xl border border-slate-700 space-y-5">
-                        <h3 class="font-bold text-white text-sm pb-2 border-b border-slate-700 flex items-center">
-                            <i class="fa-solid fa-sliders text-indigo-400 mr-2"></i> Kontrol Parameter Mobil
+                        <h3 class="font-bold text-white text-sm pb-2 border-b border-slate-700 flex items-center justify-between">
+                            <span><i class="fa-solid fa-sliders text-indigo-400 mr-2"></i> Kontrol Parameter Mobil</span>
                         </h3>
 
                         <div class="space-y-1">
@@ -306,17 +319,18 @@
                         <div class="space-y-1">
                             <div class="flex justify-between text-xs">
                                 <label class="text-slate-300 font-medium">Kecepatan Awal (v<sub>0</sub>):</label>
-                                <span id="val_v0" class="text-indigo-400 font-bold">10 m/s</span>
+                                <span id="val_v0" class="text-indigo-400 font-bold">15 m/s</span>
                             </div>
-                            <input type="range" id="input_v0" min="0" max="30" value="10" step="1" oninput="updateSimInputs()" class="w-full accent-indigo-400 h-1.5 bg-slate-700 rounded-lg cursor-pointer">
+                            <input type="range" id="input_v0" min="0" max="30" value="15" step="1" oninput="updateSimInputs()" class="w-full accent-indigo-400 h-1.5 bg-slate-700 rounded-lg cursor-pointer">
                         </div>
 
+                        <!-- KONTROL PERCEPATAN (a) -->
                         <div class="space-y-1">
                             <div class="flex justify-between text-xs">
                                 <label class="text-slate-300 font-medium">Percepatan (a):</label>
-                                <span id="val_a" class="text-emerald-400 font-bold">2 m/s<sup>2</sup></span>
+                                <span id="val_a" class="text-emerald-400 font-bold">0 m/s<sup>2</sup></span>
                             </div>
-                            <input type="range" id="input_a" min="-10" max="10" value="2" step="0.5" oninput="updateSimInputs()" class="w-full accent-emerald-400 h-1.5 bg-slate-700 rounded-lg cursor-pointer">
+                            <input type="range" id="input_a" min="-10" max="10" value="0" step="0.5" oninput="updateSimInputs()" class="w-full accent-emerald-400 h-1.5 bg-slate-700 rounded-lg cursor-pointer">
                         </div>
 
                         <div class="flex gap-2 pt-2">
@@ -331,18 +345,23 @@
                         <div class="bg-slate-900/80 p-4 rounded-xl border border-slate-800 grid grid-cols-3 gap-2 text-center text-xs">
                             <div><span class="text-slate-500 block text-[10px]">Waktu (t)</span><span id="read_t" class="font-extrabold text-amber-400 text-sm">0.0 s</span></div>
                             <div><span class="text-slate-500 block text-[10px]">Posisi (x)</span><span id="read_x" class="font-extrabold text-sky-400 text-sm">0.0 m</span></div>
-                            <div><span class="text-slate-500 block text-[10px]">Kecepatan (v)</span><span id="read_v" class="font-extrabold text-indigo-400 text-sm">10.0 m/s</span></div>
+                            <div><span class="text-slate-500 block text-[10px]">Kecepatan (v)</span><span id="read_v" class="font-extrabold text-indigo-400 text-sm">15.0 m/s</span></div>
                         </div>
 
+                        <!-- CHECKBOX MISI TERCENTANG OTOMATIS -->
                         <div class="p-3 bg-indigo-950/40 rounded-xl border border-indigo-800/40 space-y-2 text-xs">
-                            <span class="font-bold text-indigo-300 block"><i class="fa-solid fa-list-check mr-1"></i> Misi Eksperimen:</span>
-                            <label class="flex items-center space-x-2 text-slate-300 cursor-pointer">
-                                <input type="checkbox" id="chk_task1" class="rounded text-sky-500 focus:ring-0">
-                                <span>Amati mobil GLB (a = 0), grafik x-t garis lurus miring.</span>
+                            <span class="font-bold text-indigo-300 block"><i class="fa-solid fa-list-check mr-1"></i> Status Centang 3 Misi:</span>
+                            <label class="flex items-center space-x-2 text-slate-300">
+                                <input type="checkbox" id="chk_task1" disabled class="rounded text-sky-500 focus:ring-0">
+                                <span>1. Tantangan GLB (a = 0)</span>
                             </label>
-                            <label class="flex items-center space-x-2 text-slate-300 cursor-pointer">
-                                <input type="checkbox" id="chk_task2" class="rounded text-indigo-500 focus:ring-0">
-                                <span>Amati mobil GLBB (a &gt; 0), grafik x-t melengkung parabola.</span>
+                            <label class="flex items-center space-x-2 text-slate-300">
+                                <input type="checkbox" id="chk_task2" disabled class="rounded text-emerald-500 focus:ring-0">
+                                <span>2. Tantangan GLBB Dipercepat</span>
+                            </label>
+                            <label class="flex items-center space-x-2 text-slate-300">
+                                <input type="checkbox" id="chk_task3" disabled class="rounded text-rose-500 focus:ring-0">
+                                <span>3. Tantangan GLBB Pengereman</span>
                             </label>
                         </div>
                     </div>
@@ -351,7 +370,7 @@
                         <div class="relative bg-slate-950 rounded-2xl p-3 border border-slate-800 overflow-hidden shadow-inner">
                             <div class="flex justify-between items-center text-xs text-slate-400 mb-1 px-2">
                                 <span><i class="fa-solid fa-road text-amber-400 mr-1"></i> Track Mobil Virtual</span>
-                                <span id="motionTypeTag" class="px-2 py-0.5 rounded bg-sky-500/20 text-sky-300 font-bold">GLBB Dipercepat</span>
+                                <span id="motionTypeTag" class="px-2 py-0.5 rounded bg-sky-500/20 text-sky-300 font-bold">GLB (Kecepatan Tetap)</span>
                             </div>
                             <canvas id="carCanvas" class="w-full h-36 bg-slate-900 rounded-xl"></canvas>
                         </div>
@@ -370,12 +389,77 @@
                                 <canvas id="chartVT" class="w-full h-40 bg-slate-900 rounded-xl"></canvas>
                             </div>
                         </div>
+
+                        <!-- 3 KOTAK TANTANGAN DENGAN INPUT DAN CENTANG OTOMATIS -->
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-3 pt-1">
+                            
+                            <!-- TANTANGAN 1 (GLB) -->
+                            <div class="bg-slate-900/90 p-3.5 rounded-2xl border border-sky-500/40 space-y-2 flex flex-col justify-between">
+                                <div>
+                                    <div class="flex justify-between items-center text-sky-400 font-bold text-xs mb-1">
+                                        <span><i class="fa-solid fa-1 mr-1"></i> Tantangan GLB</span>
+                                        <span id="badge_t1" class="text-[10px] bg-sky-500/20 px-2 py-0.5 rounded-md text-sky-300">Belum</span>
+                                    </div>
+                                    <p class="text-[11px] text-slate-300 leading-relaxed">
+                                        Klik <strong>Preset GLB</strong> (<span class="text-sky-300 font-bold">x₀ = 0m, v₀ = 15m/s, a = 0</span>). Berapa posisi mobil (x) setelah <span class="text-amber-300 font-bold">t = 4 sekon</span>?
+                                    </p>
+                                </div>
+                                <div class="space-y-1.5 pt-2">
+                                    <div class="flex gap-1.5">
+                                        <input type="number" id="ans_m2_t1" placeholder="meter..." class="w-full bg-slate-950 px-2.5 py-1 rounded-lg text-white font-bold text-xs border border-slate-700 focus:border-sky-400 focus:outline-none">
+                                        <button onclick="checkMisi2Task1()" class="px-3 py-1 bg-sky-500 hover:bg-sky-400 text-white font-bold text-xs rounded-lg transition shadow">Jawab</button>
+                                    </div>
+                                    <div id="fb_m2_t1" class="hidden text-[10px] font-bold p-1.5 rounded-lg"></div>
+                                </div>
+                            </div>
+
+                            <!-- TANTANGAN 2 (GLBB DIPERCEPAT) -->
+                            <div class="bg-slate-900/90 p-3.5 rounded-2xl border border-emerald-500/40 space-y-2 flex flex-col justify-between">
+                                <div>
+                                    <div class="flex justify-between items-center text-emerald-400 font-bold text-xs mb-1">
+                                        <span><i class="fa-solid fa-2 mr-1"></i> GLBB Dipercepat</span>
+                                        <span id="badge_t2" class="text-[10px] bg-emerald-500/20 px-2 py-0.5 rounded-md text-emerald-300">Belum</span>
+                                    </div>
+                                    <p class="text-[11px] text-slate-300 leading-relaxed">
+                                        Klik <strong>Preset Dipercepat</strong> (<span class="text-emerald-300 font-bold">x₀ = 0m, v₀ = 5m/s, a = 3m/s²</span>). Berapa posisi mobil (x) setelah <span class="text-amber-300 font-bold">t = 4 sekon</span>?
+                                    </p>
+                                </div>
+                                <div class="space-y-1.5 pt-2">
+                                    <div class="flex gap-1.5">
+                                        <input type="number" id="ans_m2_t2" placeholder="meter..." class="w-full bg-slate-950 px-2.5 py-1 rounded-lg text-white font-bold text-xs border border-slate-700 focus:border-emerald-400 focus:outline-none">
+                                        <button onclick="checkMisi2Task2()" class="px-3 py-1 bg-emerald-500 hover:bg-emerald-400 text-white font-bold text-xs rounded-lg transition shadow">Jawab</button>
+                                    </div>
+                                    <div id="fb_m2_t2" class="hidden text-[10px] font-bold p-1.5 rounded-lg"></div>
+                                </div>
+                            </div>
+
+                            <!-- TANTANGAN 3 (GLBB PENGEREMAN) -->
+                            <div class="bg-slate-900/90 p-3.5 rounded-2xl border border-rose-500/40 space-y-2 flex flex-col justify-between">
+                                <div>
+                                    <div class="flex justify-between items-center text-rose-400 font-bold text-xs mb-1">
+                                        <span><i class="fa-solid fa-3 mr-1"></i> GLBB Pengereman</span>
+                                        <span id="badge_t3" class="text-[10px] bg-rose-500/20 px-2 py-0.5 rounded-md text-rose-300">Belum</span>
+                                    </div>
+                                    <p class="text-[11px] text-slate-300 leading-relaxed">
+                                        Klik <strong>Preset Pengereman</strong> (<span class="text-rose-300 font-bold">x₀ = 0m, v₀ = 20m/s, a = -4m/s²</span>). Berapa posisi mobil (x) saat mobil <span class="text-amber-300 font-bold">tepat berhenti (v = 0)</span>?
+                                    </p>
+                                </div>
+                                <div class="space-y-1.5 pt-2">
+                                    <div class="flex gap-1.5">
+                                        <input type="number" id="ans_m2_t3" placeholder="meter..." class="w-full bg-slate-950 px-2.5 py-1 rounded-lg text-white font-bold text-xs border border-slate-700 focus:border-rose-400 focus:outline-none">
+                                        <button onclick="checkMisi2Task3()" class="px-3 py-1 bg-rose-500 hover:bg-rose-400 text-white font-bold text-xs rounded-lg transition shadow">Jawab</button>
+                                    </div>
+                                    <div id="fb_m2_t3" class="hidden text-[10px] font-bold p-1.5 rounded-lg"></div>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- SECTION: MISI 3 (ESCAPE ROOM) -->
+        <!-- SECTION: MISI 3 (ESCAPE ROOM - SOAL GERAK MOTOR TERBARU) -->
         <section id="sec-misi3" class="tab-content hidden space-y-6">
             <div class="glass-panel p-6 rounded-3xl border border-emerald-500/30">
                 <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
@@ -444,40 +528,48 @@
                         </div>
                     </div>
 
+                    <!-- TANTANGAN 3: SOAL GERAK MOTOR -->
                     <div class="glass-card p-5 rounded-2xl border border-slate-700 space-y-4">
                         <div class="flex items-center justify-between">
                             <h3 class="font-bold text-white text-base flex items-center">
                                 <span class="w-7 h-7 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xs mr-2 font-black">3</span>
-                                Tantangan 3: Studi Kasus Pengereman & Kode Brankas
+                                Tantangan 3: Studi Kasus Gerak Motor & Kode Brankas
                             </h3>
                             <span id="score_t3" class="text-xs text-slate-400 font-bold">Skor: 0 / 50 XP</span>
                         </div>
                         <div class="p-4 rounded-xl bg-slate-900/90 border border-slate-800 text-xs space-y-2 leading-relaxed">
                             <div class="flex items-center text-amber-400 font-bold mb-1">
-                                <i class="fa-solid fa-triangle-exclamation mr-2"></i> Kasus Darurat Jalan Raya:
+                                <i class="fa-solid fa-motorcycle mr-2 text-base"></i> Kasus Gerak Motor:
                             </div>
-                            <p class="text-slate-300">
-                                Pak Ahmad mengendarai mobil dengan kecepatan awal v<sub>0</sub> = 72 km/jam (20 m/s). Tiba-tiba pada jarak <span class="text-amber-400 font-bold">45 meter</span> di depannya ada pohon tumbang.
+                            <p class="text-slate-200 font-medium">
+                                Sebuah Motor bergerak dengan kecepatan 2 m/s, kemudian kecepatannya bertambah secara teratur.
+                            </p>
+                            <p class="text-sky-300">
+                                <strong>Pertanyaan:</strong> Jika percepatan motor adalah 0,5 m/s<sup>2</sup>, berapa kecepatannya saat motor menempuh jarak sejauh 21 meter? Dan berapa waktu yang diperlukan?
                             </p>
                         </div>
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
                             <div class="bg-slate-900 p-3 rounded-xl border border-slate-800 space-y-1">
-                                <label class="text-slate-400 font-medium">1. Jarak Reaksi (s<sub>1</sub> GLB):</label>
-                                <input type="number" id="ans_s1" placeholder="m" class="w-full bg-slate-800 px-3 py-1.5 rounded-lg text-white font-bold">
+                                <label class="text-slate-400 font-medium">1. Kecepatan Motor saat s = 21 m (v<sub>t</sub>):</label>
+                                <div class="flex items-center gap-2">
+                                    <input type="number" id="ans_vt" placeholder="Ketik angka..." class="w-full bg-slate-800 px-3 py-1.5 rounded-lg text-white font-bold focus:outline-none focus:border-sky-400 border border-slate-700">
+                                    <span class="text-slate-400 font-bold">m/s</span>
+                                </div>
                             </div>
                             <div class="bg-slate-900 p-3 rounded-xl border border-slate-800 space-y-1">
-                                <label class="text-slate-400 font-medium">2. Jarak Pengereman (s<sub>2</sub> GLBB):</label>
-                                <input type="number" id="ans_s2" placeholder="m" class="w-full bg-slate-800 px-3 py-1.5 rounded-lg text-white font-bold">
-                            </div>
-                            <div class="bg-slate-900 p-3 rounded-xl border border-slate-800 space-y-1">
-                                <label class="text-slate-400 font-medium">3. Total Jarak Pengereman (s<sub>total</sub>):</label>
-                                <input type="number" id="ans_stotal" placeholder="m" class="w-full bg-slate-800 px-3 py-1.5 rounded-lg text-white font-bold">
+                                <label class="text-slate-400 font-medium">2. Waktu yang diperlukan (t):</label>
+                                <div class="flex items-center gap-2">
+                                    <input type="number" id="ans_t" placeholder="Ketik angka..." class="w-full bg-slate-800 px-3 py-1.5 rounded-lg text-white font-bold focus:outline-none focus:border-emerald-400 border border-slate-700">
+                                    <span class="text-slate-400 font-bold">sekon</span>
+                                </div>
                             </div>
                         </div>
+
                         <div class="p-4 rounded-xl bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 border border-slate-700 flex flex-col md:flex-row items-center justify-between gap-4">
                             <div>
                                 <h4 class="text-xs font-bold text-amber-400 uppercase"><i class="fa-solid fa-key mr-1"></i> Masukkan Kode Kombinasi Brankas:</h4>
-                                <p class="text-[11px] text-slate-400">Kode = Angka Total Jarak Tempuh (s<sub>total</sub>) dalam meter!</p>
+                                <p class="text-[11px] text-slate-400">Kode = Penjumlahan Nilai Kecepatan dan Waktu (v<sub>t</sub> + t)!</p>
                             </div>
                             <div class="flex items-center space-x-2 w-full md:w-auto">
                                 <input type="text" id="secretVaultCode" maxlength="3" placeholder="---" class="w-24 text-center bg-slate-950 border border-amber-500/50 text-amber-400 font-extrabold text-lg py-1.5 rounded-xl tracking-widest focus:outline-none">
@@ -492,6 +584,32 @@
         </section>
 
     </main>
+
+    <!-- MODAL MATERI GLB & GLBB (MENAMPILKAN GAMBAR FORMULA VECTOR SVG) -->
+    <div id="materiModal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+        <div class="glass-panel max-w-2xl w-full p-6 rounded-3xl border border-sky-500/40 shadow-2xl space-y-5 max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center border-b border-slate-700 pb-3">
+                <div class="flex items-center space-x-3">
+                    <div id="materiIcon" class="w-10 h-10 rounded-xl bg-sky-500/20 text-sky-400 flex items-center justify-center text-xl">
+                        <i class="fa-solid fa-image"></i>
+                    </div>
+                    <div>
+                        <h3 id="materiTitle" class="font-extrabold text-white text-lg">Materi Gerak Lurus</h3>
+                        <p class="text-xs text-slate-400">Gambar Rumus & Konsep Ringkas Fisika</p>
+                    </div>
+                </div>
+                <button onclick="closeMateriModal()" class="text-slate-400 hover:text-white text-lg p-1"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            
+            <div id="materiContent" class="space-y-4 text-xs leading-relaxed text-slate-300">
+                <!-- Diisi via JavaScript dengan Gambar Rumus Vector -->
+            </div>
+
+            <div class="flex justify-end pt-2">
+                <button onclick="closeMateriModal()" class="px-5 py-2.5 rounded-xl bg-sky-500 hover:bg-sky-400 text-white font-bold text-xs shadow-md transition">Tutup Modal</button>
+            </div>
+        </div>
+    </div>
 
     <!-- REPORT MODAL -->
     <div id="reportModal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
@@ -540,8 +658,11 @@
 
     <!-- SCRIPT APPLICATION LOGIC -->
     <script>
-        // 📍 DEKLARASI GLOBAL VARIABLE (TERPERBAIKI)
-        let state = { studentName: 'Penjelajah Muda', scoreMisi1: 0, scoreMisi2: 0, scoreMisi3: 0, m1Done: false, m2Done: false, m3Done: false, vaultUnlocked: false };
+        // URL WEB APP GOOGLE APPS SCRIPT
+        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw97KKIZ3yLS_0TLtIOM6Qa5xx1mAhgqRqXs9cf55wyaw8BQRFO2YowD1QA_oR1NYvr/exec";
+
+        let state = { studentName: 'Ketik Nama Di Sini', scoreMisi1: 0, scoreMisi2: 0, scoreMisi3: 0, m1Done: false, m2Done: false, m3Done: false, vaultUnlocked: false };
+        let m2TaskState = { t1: false, t2: false, t3: false };
         let maxWatchedTime = 0;
         let isAdjustingTime = false;
 
@@ -565,22 +686,42 @@
             setTimeout(() => playBeep(783.99, 'triangle', 0.25), 200);
         }
 
+        function sendDataToGoogleDrive() {
+            if (!GOOGLE_SCRIPT_URL) return;
+
+            const payload = {
+                studentName: document.getElementById('studentName').value || 'Tanpa Nama',
+                studentClass: document.getElementById('studentClass').value || '-',
+                scoreMisi1: state.scoreMisi1,
+                scoreMisi2: state.scoreMisi2,
+                scoreMisi3: state.scoreMisi3,
+                totalScore: state.scoreMisi1 + state.scoreMisi2 + state.scoreMisi3,
+                vaultUnlocked: state.vaultUnlocked
+            };
+
+            fetch(GOOGLE_SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            })
+            .then(() => console.log('Data nilai berhasil terkirim ke Google Sheets!'))
+            .catch(err => console.error('Gagal mengirim data:', err));
+        }
+
         function switchTab(tabId) {
-            // SYARAT MISI 2: Skor Misi 1 minimal 80 XP
             if (tabId === 'misi2' && state.scoreMisi1 < 80) {
                 playBeep(200, 'sawtooth', 0.2);
                 alert(`🔒 Misi 2 Masih Terkunci!\n\nSkor Misi 1 kamu saat ini baru ${state.scoreMisi1} XP.\nKamu harus mencapai skor minimal 80 XP di Misi 1 untuk dapat membuka Misi 2!`);
                 return;
             }
 
-            // SYARAT MISI 3: Skor Misi 1 minimal 80 XP & Misi 2 harus selesai
             if (tabId === 'misi3' && (state.scoreMisi1 < 80 || !state.m2Done)) {
                 playBeep(200, 'sawtooth', 0.2);
                 alert(`🔒 Misi 3 Masih Terkunci!\n\nPastikan kamu sudah menyelesaikan Misi 1 (minimal 80 XP) dan Misi 2 terlebih dahulu!`);
                 return;
             }
 
-            // Pindah halaman jika syarat terpenuhi
             playBeep(600, 'sine', 0.05);
             document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
             document.querySelectorAll('.nav-btn').forEach(el => el.classList.remove('active', 'text-sky-400', 'bg-slate-800'));
@@ -593,137 +734,268 @@
                 const videoEl = document.getElementById('localVideo');
                 if (videoEl) videoEl.play().catch(e => console.log("Autoplay blocked:", e));
             }
+
+            if (tabId === 'misi2') {
+                setTimeout(() => {
+                    resizeCanvas();
+                    resetSim();
+                }, 100);
+            }
         }
 
-        // --- MISI 1 (VIDEO LOCAL HTML5 INTERAKTIF) LOGIC ---
+        // --- MISI 2 LOGIKA CHECKER 3 TANTANGAN ---
+        function checkMisi2Task1() {
+            const ans = parseFloat(document.getElementById('ans_m2_t1').value);
+            const fb = document.getElementById('fb_m2_t1');
+            
+            // x = x0 + v0*t = 0 + 15*4 = 60m
+            if (ans === 60) {
+                playSuccessSound();
+                document.getElementById('chk_task1').checked = true; // OTOMATIS TERCENTANG!
+                document.getElementById('badge_t1').innerText = "Selesai ✓";
+                document.getElementById('badge_t1').className = "text-[10px] bg-emerald-500/20 px-2 py-0.5 rounded-md text-emerald-300 font-bold";
+                
+                fb.className = "text-[10px] font-bold p-1.5 rounded-lg bg-emerald-950 text-emerald-300 border border-emerald-500/40 block";
+                fb.innerText = "🎉 Benar! (x = 60 m). Kotak 1 Tercentang!";
+                m2TaskState.t1 = true;
+                evaluateMisi2Progress();
+            } else {
+                playBeep(200, 'sawtooth', 0.2);
+                fb.className = "text-[10px] font-bold p-1.5 rounded-lg bg-rose-950 text-rose-300 border border-rose-500/40 block";
+                fb.innerText = "❌ Kurang tepat! s = v × t = 15 × 4. Coba lagi!";
+            }
+        }
+
+        function checkMisi2Task2() {
+            const ans = parseFloat(document.getElementById('ans_m2_t2').value);
+            const fb = document.getElementById('fb_m2_t2');
+            
+            // x = 0 + 5(4) + 0.5(3)(16) = 20 + 24 = 44m
+            if (ans === 44) {
+                playSuccessSound();
+                document.getElementById('chk_task2').checked = true; // OTOMATIS TERCENTANG!
+                document.getElementById('badge_t2').innerText = "Selesai ✓";
+                document.getElementById('badge_t2').className = "text-[10px] bg-emerald-500/20 px-2 py-0.5 rounded-md text-emerald-300 font-bold";
+                
+                fb.className = "text-[10px] font-bold p-1.5 rounded-lg bg-emerald-950 text-emerald-300 border border-emerald-500/40 block";
+                fb.innerText = "🎉 Benar! (x = 44 m). Kotak 2 Tercentang!";
+                m2TaskState.t2 = true;
+                evaluateMisi2Progress();
+            } else {
+                playBeep(200, 'sawtooth', 0.2);
+                fb.className = "text-[10px] font-bold p-1.5 rounded-lg bg-rose-950 text-rose-300 border border-rose-500/40 block";
+                fb.innerText = "❌ Salah! s = v₀·t + ½·a·t² = 5(4) + ½(3)(16). Coba lagi!";
+            }
+        }
+
+        function checkMisi2Task3() {
+            const ans = parseFloat(document.getElementById('ans_m2_t3').value);
+            const fb = document.getElementById('fb_m2_t3');
+            
+            // t = 20/4 = 5s. x = 20(5) - 0.5(4)(25) = 100 - 50 = 50m
+            if (ans === 50) {
+                playSuccessSound();
+                document.getElementById('chk_task3').checked = true; // OTOMATIS TERCENTANG!
+                document.getElementById('badge_t3').innerText = "Selesai ✓";
+                document.getElementById('badge_t3').className = "text-[10px] bg-emerald-500/20 px-2 py-0.5 rounded-md text-emerald-300 font-bold";
+                
+                fb.className = "text-[10px] font-bold p-1.5 rounded-lg bg-emerald-950 text-emerald-300 border border-emerald-500/40 block";
+                fb.innerText = "🎉 Benar! (x = 50 m). Kotak 3 Tercentang!";
+                m2TaskState.t3 = true;
+                evaluateMisi2Progress();
+            } else {
+                playBeep(200, 'sawtooth', 0.2);
+                fb.className = "text-[10px] font-bold p-1.5 rounded-lg bg-rose-950 text-rose-300 border border-rose-500/40 block";
+                fb.innerText = "❌ Salah! Waktu t=5s (20/4), x = 20(5) - ½(4)(25) = 50m.";
+            }
+        }
+
+        function evaluateMisi2Progress() {
+            let score = 0;
+            if (m2TaskState.t1) score += 30;
+            if (m2TaskState.t2) score += 35;
+            if (m2TaskState.t3) score += 35;
+
+            state.scoreMisi2 = score;
+            if (m2TaskState.t1 && m2TaskState.t2 && m2TaskState.t3) {
+                state.m2Done = true;
+                alert("🎉 SELAMAT! Kamu berhasil menyelesaikan ketiga tantangan di Misi 2!\n\nMisi 3 (Escape Room Kunci) sekarang telah terbuka!");
+                sendDataToGoogleDrive();
+            }
+            updateGlobalScore();
+        }
+
+        // FUNGSI MODAL MATERI DENGAN GAMBAR RUMUS VEKTOR SVG LENGKAP
+        function openMateriModal(type) {
+            const titleEl = document.getElementById('materiTitle');
+            const iconEl = document.getElementById('materiIcon');
+            const contentEl = document.getElementById('materiContent');
+
+            if (type === 'glb') {
+                iconEl.className = "w-10 h-10 rounded-xl bg-sky-500/20 text-sky-400 flex items-center justify-center text-xl";
+                titleEl.innerText = "Materi Gerak Lurus Beraturan (GLB)";
+                
+                contentEl.innerHTML = `
+                    <div class="p-3 bg-sky-950/40 rounded-xl border border-sky-800/50 space-y-1">
+                        <h4 class="font-bold text-sky-300 text-xs uppercase tracking-wider">💡 Pengertian GLB:</h4>
+                        <p class="text-slate-200">Gerak suatu benda pada lintasan lurus dengan <strong>kecepatan tetap (konstan)</strong>. Karena kecepatannya tidak berubah, maka <strong>percepatan benda a = 0 m/s²</strong>.</p>
+                    </div>
+
+                    <!-- GAMBAR SEGITIGA RUMUS GLB (SVG VEKTOR) -->
+                    <div class="my-3 space-y-1 text-center">
+                        <span class="text-[10px] font-extrabold text-sky-400 tracking-widest uppercase block">🖼️ Gambar Segitiga & Rumus Utama GLB</span>
+                        <svg viewBox="0 0 500 180" class="w-full h-auto bg-slate-950 rounded-2xl border border-sky-500/40 p-2 shadow-lg" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Segitiga s / v * t -->
+                            <polygon points="90,15 20,145 160,145" fill="#1e293b" stroke="#38bdf8" stroke-width="3"/>
+                            <line x1="20" y1="90" x2="160" y2="90" stroke="#38bdf8" stroke-width="3"/>
+                            <line x1="90" y1="90" x2="90" y2="145" stroke="#38bdf8" stroke-width="3"/>
+                            
+                            <text x="90" y="65" fill="#fbbf24" font-size="30" font-weight="extrabold" font-family="sans-serif" text-anchor="middle">s</text>
+                            <text x="55" y="130" fill="#38bdf8" font-size="24" font-weight="bold" font-family="sans-serif" text-anchor="middle">v</text>
+                            <text x="125" y="130" fill="#34d399" font-size="24" font-weight="bold" font-family="sans-serif" text-anchor="middle">t</text>
+
+                            <!-- Kartu Rumus -->
+                            <g transform="translate(190, 15)">
+                                <rect x="0" y="0" width="280" height="42" rx="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+                                <text x="140" y="27" fill="#fbbf24" font-size="20" font-weight="extrabold" font-family="monospace" text-anchor="middle">s = v &#215; t</text>
+
+                                <rect x="0" y="52" width="280" height="42" rx="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+                                <text x="140" y="79" fill="#38bdf8" font-size="20" font-weight="extrabold" font-family="monospace" text-anchor="middle">v = s / t</text>
+
+                                <rect x="0" y="104" width="280" height="42" rx="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+                                <text x="140" y="131" fill="#34d399" font-size="20" font-weight="extrabold" font-family="monospace" text-anchor="middle">t = s / v</text>
+                            </g>
+                        </svg>
+                    </div>
+
+                    <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 space-y-1">
+                        <h4 class="font-bold text-amber-400 text-xs uppercase tracking-wider">Keterangan Symbol Rumus:</h4>
+                        <ul class="list-disc list-inside space-y-1 text-slate-300">
+                            <li><strong class="text-amber-400">s</strong> = Jarak Tempuh / Perpindahan (meter)</li>
+                            <li><strong class="text-sky-400">v</strong> = Kecepatan (m/s)</li>
+                            <li><strong class="text-emerald-400">t</strong> = Waktu Tempuh (sekon)</li>
+                        </ul>
+                    </div>
+                `;
+            } else if (type === 'glbb') {
+                iconEl.className = "w-10 h-10 rounded-xl bg-indigo-500/20 text-indigo-400 flex items-center justify-center text-xl";
+                titleEl.innerText = "Materi Gerak Lurus Berubah Beraturan (GLBB)";
+                
+                contentEl.innerHTML = `
+                    <div class="p-3 bg-indigo-950/40 rounded-xl border border-indigo-800/50 space-y-1">
+                        <h4 class="font-bold text-indigo-300 text-xs uppercase tracking-wider">💡 Pengertian GLBB:</h4>
+                        <p class="text-slate-200">Gerak benda pada lintasan lurus dengan <strong>percepatan (a) konstan</strong>. Kecepatan benda berubah secara teratur (dipercepat atau diperlambat).</p>
+                    </div>
+
+                    <!-- GAMBAR 3 KARTU RUMUS GLBB (SVG VEKTOR) -->
+                    <div class="my-3 space-y-1 text-center">
+                        <span class="text-[10px] font-extrabold text-indigo-400 tracking-widest uppercase block">🖼️ Gambar 3 Rumus Utama GLBB</span>
+                        <svg viewBox="0 0 500 220" class="w-full h-auto bg-slate-950 rounded-2xl border border-indigo-500/40 p-3 shadow-lg" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Rumus 1 -->
+                            <g transform="translate(15, 10)">
+                                <rect x="0" y="0" width="470" height="55" rx="12" fill="#1e293b" stroke="#818cf8" stroke-width="2"/>
+                                <text x="20" y="33" fill="#fbbf24" font-size="13" font-weight="bold" font-family="sans-serif">1. Kecepatan Akhir (v&#x209C;):</text>
+                                <text x="330" y="36" fill="#38bdf8" font-size="22" font-weight="extrabold" font-family="monospace" text-anchor="middle">v&#x209C; = v&#x2080; + a &#183; t</text>
+                            </g>
+                            
+                            <!-- Rumus 2 -->
+                            <g transform="translate(15, 78)">
+                                <rect x="0" y="0" width="470" height="62" rx="12" fill="#1e293b" stroke="#818cf8" stroke-width="2"/>
+                                <text x="20" y="36" fill="#fbbf24" font-size="13" font-weight="bold" font-family="sans-serif">2. Perpindahan (s):</text>
+                                <text x="330" y="38" fill="#38bdf8" font-size="20" font-weight="extrabold" font-family="monospace" text-anchor="middle">s = v&#x2080;&#183;t + &#189;&#183;a&#183;t&#178;</text>
+                            </g>
+                            
+                            <!-- Rumus 3 -->
+                            <g transform="translate(15, 150)">
+                                <rect x="0" y="0" width="470" height="55" rx="12" fill="#1e293b" stroke="#818cf8" stroke-width="2"/>
+                                <text x="20" y="33" fill="#fbbf24" font-size="13" font-weight="bold" font-family="sans-serif">3. Hubungan v &amp; s:</text>
+                                <text x="330" y="36" fill="#38bdf8" font-size="20" font-weight="extrabold" font-family="monospace" text-anchor="middle">v&#x209C;&#178; = v&#x2080;&#178; + 2&#183;a&#183;s</text>
+                            </g>
+                        </svg>
+                    </div>
+
+                    <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 space-y-1">
+                        <h4 class="font-bold text-amber-400 text-xs uppercase tracking-wider">Keterangan Symbol Rumus:</h4>
+                        <ul class="list-disc list-inside space-y-1 text-slate-300">
+                            <li><strong>v<sub>0</sub></strong> = Kecepatan Awal (m/s)</li>
+                            <li><strong>v<sub>t</sub></strong> = Kecepatan Akhir pada detik ke-t (m/s)</li>
+                            <li><strong>a</strong> = Percepatan (m/s<sup>2</sup>)</li>
+                            <li><strong>s</strong> = Perpindahan / Jarak Tempuh (meter)</li>
+                        </ul>
+                    </div>
+                `;
+            }
+
+            document.getElementById('materiModal').classList.remove('hidden');
+        }
+
+        function closeMateriModal() {
+            document.getElementById('materiModal').classList.add('hidden');
+        }
+
+        // --- MISI 1 (VIDEO LOGIC) ---
         let currentActiveQuizIndex = -1;
 
         const videoQuizzes = [
             {
-                id: 1,
-                time: 101, // Detik ke-101 (1:41)
-                title: "Tantangan 1: Apa itu gerak?",
+                id: 1, time: 101, title: "Tantangan 1: Apa itu gerak?",
                 q: "Dalam fisika, benda dikatakan bergerak jika terdapat perubahan posisi atau kedudukan terhadap kerangka acuan tertentu.",
-                opts: ["Betul", "Salah"],
-                correct: 0,
-                explain: "Benar! Gerak membutuhkan perubahan posisi terhadap titik acuan.",
-                completed: false
+                opts: ["Betul", "Salah"], correct: 0, explain: "Benar! Gerak membutuhkan perubahan posisi terhadap titik acuan.", completed: false
             },
             {
-                id: 2,
-                time: 215, // Detik ke-215 (3:35)
-                title: "Tantangan 2: Jarak vs Perpindahan",
+                id: 2, time: 215, title: "Tantangan 2: Jarak vs Perpindahan",
                 q: "Seorang anak berjalan 10 meter ke timur, kemudian berbalik 4 meter ke barat. Berapakah jarak dan perpindahannya?",
-                opts: [
-                    "Jarak = 14 m, Perpindahan = 14 m ke timur",
-                    "Jarak = 6 m, Perpindahan = 14 m ke timur",
-                    "Jarak = 14 m, Perpindahan = 6 m ke timur"
-                ],
-                correct: 2,
-                explain: "Benar! Jarak total = 10 + 4 = 14 m. Perpindahan = 10 - 4 = 6 m ke timur.",
-                completed: false
+                opts: ["Jarak = 14 m, Perpindahan = 14 m ke timur", "Jarak = 6 m, Perpindahan = 14 m ke timur", "Jarak = 14 m, Perpindahan = 6 m ke timur"],
+                correct: 2, explain: "Benar! Jarak total = 10 + 4 = 14 m. Perpindahan = 10 - 4 = 6 m ke timur.", completed: false
             },
             {
-                id: 3,
-                time: 242, // Detik ke-242 (4:02)
-                title: "Tantangan 3: Kelajuan vs Kecepatan",
+                id: 3, time: 242, title: "Tantangan 3: Kelajuan vs Kecepatan",
                 q: "Jika anak tersebut butuh waktu 2 detik (Jarak 14 m, Perpindahan 6 m), berapakah kelajuan & kecepatannya?",
-                opts: [
-                    "Kelajuan = 7 m/s, Kecepatan = 3 m/s",
-                    "Kelajuan = 3 m/s, Kecepatan = 7 m/s",
-                    "Kelajuan = 7 m/s, Kecepatan = 7 m/s"
-                ],
-                correct: 0,
-                explain: "Benar! Kelajuan = Jarak/t = 14/2 = 7 m/s. Kecepatan = Perpindahan/t = 6/2 = 3 m/s.",
-                completed: false
+                opts: ["Kelajuan = 7 m/s, Kecepatan = 3 m/s", "Kelajuan = 3 m/s, Kecepatan = 7 m/s", "Kelajuan = 7 m/s, Kecepatan = 7 m/s"],
+                correct: 0, explain: "Benar! Kelajuan = Jarak/t = 14/2 = 7 m/s. Kecepatan = Perpindahan/t = 6/2 = 3 m/s.", completed: false
             },
             {
-                id: 4,
-                time: 303, // Detik ke-303 (5:03)
-                title: "Tantangan 4: Apa yang diukur speedometer?",
+                id: 4, time: 303, title: "Tantangan 4: Apa yang diukur speedometer?",
                 q: "Speedometer pada kendaraan sebenarnya mengukur kecepatan/kelajuan sesaat dari kendaraan tersebut.",
-                opts: ["Salah", "Benar"],
-                correct: 1,
-                explain: "Benar! Speedometer mengukur kelajuan sesaat pada detik tersebut.",
-                completed: false
+                opts: ["Salah", "Benar"], correct: 1, explain: "Benar! Speedometer mengukur kelajuan sesaat pada detik tersebut.", completed: false
             },
             {
-                id: 5,
-                time: 379, // Detik ke-379 (6:19)
-                title: "Tantangan 5: Membaca grafik",
+                id: 5, time: 379, title: "Tantangan 5: Membaca grafik",
                 q: "Dari membaca grafik, pilihlah pernyataan berikut yang benar!",
-                opts: [
-                    "Semakin curam kemiringan, maka semakin lambat pergerakan benda",
-                    "Semakin curam kemiringan, maka semakin cepat pergerakan benda",
-                    "Jika kurva melengkung, berarti benda sedang bergerak dengan kecepatan tetap"
-                ],
-                correct: 1,
-                explain: "Sempurna! Kemiringan grafik posisi-waktu menunjukkan besarnya kecepatan.",
-                completed: false
+                opts: ["Semakin curam kemiringan, maka semakin lambat pergerakan benda", "Semakin curam kemiringan, maka semakin cepat pergerakan benda", "Jika kurva melengkung, berarti benda sedang bergerak dengan kecepatan tetap"],
+                correct: 1, explain: "Sempurna! Kemiringan grafik posisi-waktu menunjukkan besarnya kecepatan.", completed: false
             }
         ];
 
         function resetMisi1() {
-            if (!confirm("Apakah kamu ingin mengulang Misi 1 dari awal untuk memperbaiki nilai?")) {
-                return;
-            }
-
-            // Reset status kuis
-            videoQuizzes.forEach(q => {
-                q.completed = false;
-                delete q.isCorrect;
-            });
-
-            // Reset skor & timer pengunci video
-            state.scoreMisi1 = 0;
-            state.m1Done = false;
-            currentActiveQuizIndex = -1;
-            maxWatchedTime = 0;
-
-            // Reset Tampilan
+            if (!confirm("Apakah kamu ingin mengulang Misi 1 dari awal untuk memperbaiki nilai?")) return;
+            videoQuizzes.forEach(q => { q.completed = false; delete q.isCorrect; });
+            state.scoreMisi1 = 0; state.m1Done = false; currentActiveQuizIndex = -1; maxWatchedTime = 0;
             document.getElementById('misi1ScoreText').innerText = "0 / 100 XP";
-            if (typeof updateProgressUI === 'function') {
-                updateProgressUI();
-            }
-
             document.getElementById('videoOverlay').classList.add('hidden');
-
-            // Putar dari detik 0
             const videoEl = document.getElementById('localVideo');
-            if (videoEl) {
-                videoEl.currentTime = 0;
-                videoEl.play();
-            }
-
+            if (videoEl) { videoEl.currentTime = 0; videoEl.play(); }
             updateGlobalScore();
             playBeep(400, 'sine', 0.1);
         }
 
-        // 📍 INI BAGIAN FUNGSI VIDEO YANG SUDAH DIPERBAIKI (ANTI-FORWARD BEBAS MACET)
         function initLocalVideoPlayer() {
             const videoEl = document.getElementById('localVideo');
             if (!videoEl) return;
 
-            // 1. MONITORING MOVEMENT & BLOKIR JUMP MAJU
             videoEl.addEventListener('timeupdate', () => {
-                if (isAdjustingTime) return; // Mencegah bentrokan event/macet
-
+                if (isAdjustingTime) return;
                 const currentTime = videoEl.currentTime;
 
-                // JIKA SISWA COBA MELOMPAT MAJU MELEBIHI WAKTU DITONTON:
                 if (currentTime > maxWatchedTime + 1.0) {
                     isAdjustingTime = true;
-                    videoEl.currentTime = maxWatchedTime; // Kembalikan ke titik terakhir
+                    videoEl.currentTime = maxWatchedTime;
                     setTimeout(() => { isAdjustingTime = false; }, 100);
                     return;
                 }
 
-                // JIKA DIPUTAR NORMAL: Catat progres waktu tertinggi
-                if (currentTime > maxWatchedTime) {
-                    maxWatchedTime = currentTime;
-                }
+                if (currentTime > maxWatchedTime) maxWatchedTime = currentTime;
 
-                // 2. PEMINDAIAN KUIS OTOMATIS
                 for (let i = 0; i < videoQuizzes.length; i++) {
                     const q = videoQuizzes[i];
                     if (!q.completed && currentTime >= q.time && currentActiveQuizIndex === -1) {
@@ -735,21 +1007,8 @@
                 }
             });
 
-            // 3. KUNCI KECEPATAN PEMUTARAN (Wajib 1x Normal)
             videoEl.addEventListener('ratechange', () => {
-                if (videoEl.playbackRate !== 1.0) {
-                    videoEl.playbackRate = 1.0;
-                }
-            });
-
-            // 4. BLOKIR SHORTCUT KEYBOARD (Panah Kanan, Panah Atas & Tombol L)
-            window.addEventListener('keydown', (e) => {
-                const m1Tab = document.getElementById('sec-misi1');
-                if (m1Tab && !m1Tab.classList.contains('hidden')) {
-                    if (['ArrowRight', 'ArrowUp', 'l', 'L'].includes(e.key)) {
-                        e.preventDefault();
-                    }
-                }
+                if (videoEl.playbackRate !== 1.0) videoEl.playbackRate = 1.0;
             });
         }
 
@@ -777,42 +1036,29 @@
             const feedbackEl = document.getElementById('overlayFeedback');
             const videoEl = document.getElementById('localVideo');
 
-            // 1. Langsung tandai kuis ini selesai agar tidak bisa diulang
             quiz.completed = true;
-
-            // 2. Matikan semua tombol pilihan agar siswa tidak bisa mengklik lagi
             const buttons = document.querySelectorAll('#overlayOptions button');
             buttons.forEach(btn => btn.disabled = true);
 
             const titleClean = quiz.title.includes(':') ? quiz.title.split(':')[1].trim() : quiz.title;
 
             if (optIndex === quiz.correct) {
-                // JAWABAN BENAR
                 playSuccessSound();
                 quiz.isCorrect = true;
-
                 feedbackEl.className = "text-xs font-bold p-2.5 rounded-xl w-full max-w-md bg-emerald-950 text-emerald-300 border border-emerald-500/50 block";
                 feedbackEl.innerText = "🎉 Jawaban Benar! " + quiz.explain;
-
-                // Status Progres (Hijau)
                 const progEl = document.getElementById(`qProgress${quiz.id}`);
                 if (progEl) {
                     progEl.className = "p-2 rounded-xl bg-emerald-950/60 border border-emerald-500/40 flex justify-between items-center text-emerald-200";
                     progEl.innerHTML = `<span>${quiz.id}. ${titleClean}</span><span class="font-bold text-emerald-400">Selesai ✓</span>`;
                 }
-
             } else {
-                // JAWABAN SALAH
                 playBeep(200, 'sawtooth', 0.2);
                 quiz.isCorrect = false;
-
                 const correctLetter = String.fromCharCode(65 + quiz.correct);
                 const correctText = quiz.opts[quiz.correct];
-
                 feedbackEl.className = "text-xs font-bold p-2.5 rounded-xl w-full max-w-md bg-rose-950 text-rose-300 border border-rose-500/50 block";
                 feedbackEl.innerText = `❌ Jawaban Salah! Kunci Jawaban: ${correctLetter}. ${correctText}\n💡 Pembahasan: ${quiz.explain}`;
-
-                // Status Progres (Merah)
                 const progEl = document.getElementById(`qProgress${quiz.id}`);
                 if (progEl) {
                     progEl.className = "p-2 rounded-xl bg-rose-950/60 border border-rose-500/40 flex justify-between items-center text-rose-200";
@@ -820,7 +1066,6 @@
                 }
             }
 
-            // 3. Hitung skor hanya dari kuis yang dijawab BENAR
             const correctCount = videoQuizzes.filter(x => x.completed && x.isCorrect).length;
             state.scoreMisi1 = Math.round((correctCount / videoQuizzes.length) * 100);
 
@@ -837,7 +1082,6 @@
             document.getElementById('misi1ScoreText').innerText = `${state.scoreMisi1} / 100 XP`;
             updateGlobalScore();
 
-            // 4. Lanjut putar video otomatis setelah 3 detik (memberi waktu membaca pembahasan)
             setTimeout(() => {
                 document.getElementById('videoOverlay').classList.add('hidden');
                 currentActiveQuizIndex = -1;
@@ -847,7 +1091,7 @@
 
         // --- MISI 2 SIMULASI LOGIC ---
         let simInterval = null, simRunning = false;
-        let simData = { x0: 0, v0: 10, a: 2, t: 0, x: 0, v: 10, historyT: [], historyX: [], historyV: [] };
+        let simData = { x0: 0, v0: 15, a: 0, t: 0, x: 0, v: 15, historyT: [], historyX: [], historyV: [] };
 
         const carCanvas = document.getElementById('carCanvas');
         const ctxCar = carCanvas.getContext('2d');
@@ -855,9 +1099,13 @@
         const chartVT = document.getElementById('chartVT').getContext('2d');
 
         function resizeCanvas() {
-            carCanvas.width = carCanvas.clientWidth;
-            carCanvas.height = carCanvas.clientHeight;
-            drawCarTrack(); drawCharts();
+            if (!carCanvas) return;
+            const wC = carCanvas.clientWidth || 600;
+            const hC = carCanvas.clientHeight || 140;
+            carCanvas.width = wC;
+            carCanvas.height = hC;
+            drawCarTrack(); 
+            drawCharts();
         }
 
         function updateSimInputs() {
@@ -867,19 +1115,46 @@
             document.getElementById('val_x0').innerText = simData.x0 + " m";
             document.getElementById('val_v0').innerText = simData.v0 + " m/s";
             document.getElementById('val_a').innerText = simData.a + " m/s²";
+
+            const tag = document.getElementById('motionTypeTag');
+            if (tag) {
+                if (simData.a === 0) tag.innerText = "GLB (Kecepatan Tetap)";
+                else if (simData.a > 0) tag.innerText = "GLBB Dipercepat";
+                else tag.innerText = "GLBB Diperlambat";
+            }
+
             if (!simRunning) resetSim();
         }
 
         function setPreset(type) {
-            if (type === 'glb') { document.getElementById('input_x0').value = 0; document.getElementById('input_v0').value = 15; document.getElementById('input_a').value = 0; }
-            else if (type === 'glbb_acc') { document.getElementById('input_x0').value = 0; document.getElementById('input_v0').value = 5; document.getElementById('input_a').value = 3; }
-            else if (type === 'glbb_dec') { document.getElementById('input_x0').value = -30; document.getElementById('input_v0').value = 25; document.getElementById('input_a').value = -4; }
+            if (type === 'glb') { 
+                document.getElementById('input_x0').value = 0; 
+                document.getElementById('input_v0').value = 15; 
+                document.getElementById('input_a').value = 0; 
+            }
+            else if (type === 'glbb_acc') { 
+                document.getElementById('input_x0').value = 0; 
+                document.getElementById('input_v0').value = 5; 
+                document.getElementById('input_a').value = 3; 
+            }
+            else if (type === 'glbb_dec') { 
+                document.getElementById('input_x0').value = 0; 
+                document.getElementById('input_v0').value = 20; 
+                document.getElementById('input_a').value = -4; 
+            }
             updateSimInputs();
         }
 
         function toggleSim() {
-            if (simRunning) { clearInterval(simInterval); simRunning = false; document.getElementById('btnSimStart').innerHTML = `<i class="fa-solid fa-play mr-1"></i> Lanjutkan`; }
-            else { simRunning = true; document.getElementById('btnSimStart').innerHTML = `<i class="fa-solid fa-pause mr-1"></i> Pause`; simInterval = setInterval(stepSim, 50); state.scoreMisi2 = 80; state.m2Done = true; updateGlobalScore(); }
+            if (simRunning) { 
+                clearInterval(simInterval); 
+                simRunning = false; 
+                document.getElementById('btnSimStart').innerHTML = `<i class="fa-solid fa-play mr-1"></i> Lanjutkan`; 
+            } else { 
+                simRunning = true; 
+                document.getElementById('btnSimStart').innerHTML = `<i class="fa-solid fa-pause mr-1"></i> Pause`; 
+                simInterval = setInterval(stepSim, 50); 
+            }
         }
 
         function resetSim() {
@@ -907,32 +1182,82 @@
 
         function drawCarTrack() {
             const w = carCanvas.width, h = carCanvas.height;
+            if (w === 0 || h === 0) return;
             ctxCar.clearRect(0, 0, w, h);
-            ctxCar.fillStyle = '#0f172a'; ctxCar.fillRect(0, h/2 - 20, w, 40);
+
+            ctxCar.fillStyle = '#0f172a'; 
+            ctxCar.fillRect(0, h/2 - 20, w, 40);
+
+            ctxCar.strokeStyle = '#334155';
+            ctxCar.setLineDash([8, 8]);
+            ctxCar.beginPath();
+            ctxCar.moveTo(0, h/2); ctxCar.lineTo(w, h/2);
+            ctxCar.stroke();
+            ctxCar.setLineDash([]);
+
             const mapX = (m) => ((m + 100) / 300) * w;
+            ctxCar.fillStyle = '#64748b';
+            ctxCar.font = '10px sans-serif';
+            [-100, -50, 0, 50, 100, 150, 200].forEach(m => {
+                const px = mapX(m);
+                ctxCar.fillRect(px, h/2 + 20, 1, 4);
+                ctxCar.fillText(m + 'm', px - 8, h/2 + 32);
+            });
+
             const carPx = mapX(simData.x), carY = h/2 - 12;
             ctxCar.fillStyle = simData.a >= 0 ? '#38bdf8' : '#f43f5e';
             ctxCar.fillRect(carPx - 15, carY, 30, 16);
+            ctxCar.fillStyle = '#000';
+            ctxCar.fillRect(carPx - 10, carY + 14, 6, 3);
+            ctxCar.fillRect(carPx + 4, carY + 14, 6, 3);
         }
 
         function drawCharts() {
-            const wX = chartXT.canvas.clientWidth, hX = chartXT.canvas.clientHeight;
+            const wX = chartXT.canvas.clientWidth || 300;
+            const hX = chartXT.canvas.clientHeight || 150;
             chartXT.canvas.width = wX; chartXT.canvas.height = hX;
-            chartXT.clearRect(0, 0, wX, hX); chartXT.strokeStyle = '#38bdf8'; chartXT.lineWidth = 2; chartXT.beginPath();
-            for (let i = 0; i < simData.historyT.length; i++) {
-                const px = (simData.historyT[i] / 10) * wX, py = hX - ((simData.historyX[i] + 100) / 300) * hX;
-                if (i === 0) chartXT.moveTo(px, py); else chartXT.lineTo(px, py);
-            }
+            chartXT.clearRect(0, 0, wX, hX);
+
+            chartXT.strokeStyle = '#334155';
+            chartXT.lineWidth = 1;
+            chartXT.beginPath();
+            chartXT.moveTo(25, 10); chartXT.lineTo(25, hX - 20); chartXT.lineTo(wX - 10, hX - 20);
             chartXT.stroke();
 
-            const wV = chartVT.canvas.clientWidth, hV = chartVT.canvas.clientHeight;
-            chartVT.canvas.width = wV; chartVT.canvas.height = hV;
-            chartVT.clearRect(0, 0, wV, hV); chartVT.strokeStyle = '#818cf8'; chartVT.lineWidth = 2; chartVT.beginPath();
-            for (let i = 0; i < simData.historyT.length; i++) {
-                const px = (simData.historyT[i] / 10) * wV, py = hV - (simData.historyV[i] / 50) * hV;
-                if (i === 0) chartVT.moveTo(px, py); else chartVT.lineTo(px, py);
+            if (simData.historyT.length > 0) {
+                chartXT.strokeStyle = '#38bdf8'; 
+                chartXT.lineWidth = 2; 
+                chartXT.beginPath();
+                for (let i = 0; i < simData.historyT.length; i++) {
+                    const px = 25 + (simData.historyT[i] / 10) * (wX - 35);
+                    const py = (hX - 20) - ((simData.historyX[i] + 100) / 300) * (hX - 30);
+                    if (i === 0) chartXT.moveTo(px, py); else chartXT.lineTo(px, py);
+                }
+                chartXT.stroke();
             }
+
+            const wV = chartVT.canvas.clientWidth || 300;
+            const hV = chartVT.canvas.clientHeight || 150;
+            chartVT.canvas.width = wV; chartVT.canvas.height = hV;
+            chartVT.clearRect(0, 0, wV, hV);
+
+            chartVT.strokeStyle = '#334155';
+            chartVT.lineWidth = 1;
+            chartVT.beginPath();
+            chartVT.moveTo(25, 10); chartVT.lineTo(25, hV - 20); chartVT.lineTo(wV - 10, hV - 20);
             chartVT.stroke();
+
+            if (simData.historyT.length > 0) {
+                chartVT.strokeStyle = '#818cf8'; 
+                chartVT.lineWidth = 2; 
+                chartVT.beginPath();
+                for (let i = 0; i < simData.historyT.length; i++) {
+                    const px = 25 + (simData.historyT[i] / 10) * (wV - 35);
+                    const py = (hV - 20) - (simData.historyV[i] / 50) * (hV - 30);
+                    if (i === 0) chartVT.moveTo(px, py); else chartVT.lineTo(px, py);
+                }
+                chartVT.stroke();
+            }
         }
 
         // --- MISI 3 LOGIC ---
@@ -1000,16 +1325,29 @@
             document.getElementById('score_t2').innerText = `Skor: 40 / 40 XP`; updateGlobalScore();
         }
 
+        // FUNGSI UNLOCK VAULT DENGAN MENGIRIM HASIL KE GOOGLE DRIVE
         function unlockVaultDoor() {
-            const stotal = parseFloat(document.getElementById('ans_stotal').value);
-            const code = document.getElementById('secretVaultCode').value;
-            if (stotal === 52 || code === "52") {
-                playSuccessSound(); state.vaultUnlocked = true; state.m3Done = true; state.scoreMisi3 = 120;
+            const vtVal = parseFloat(document.getElementById('ans_vt').value);
+            const tVal = parseFloat(document.getElementById('ans_t').value);
+            const code = document.getElementById('secretVaultCode').value.trim();
+
+            if (vtVal === 5 && tVal === 6 && (code === "11" || code === "011")) {
+                playSuccessSound(); 
+                state.vaultUnlocked = true; 
+                state.m3Done = true; 
+                state.scoreMisi3 = 120;
+                
                 document.getElementById('doorStatus').innerHTML = `<span class="text-emerald-400 font-extrabold animate-pulse">TERBUKA! <i class="fa-solid fa-unlock"></i></span>`;
-                alert("🎉 SELAMAT! Pintu Ruang Rahasia Kinematika Berhasil Terbuka!");
-                updateGlobalScore(); openReportModal();
+                
+                // MENGIRIM DATA OTOMATIS KE GOOGLE SHEETS
+                sendDataToGoogleDrive();
+
+                alert("🎉 SELAMAT! Jawabanmu Tepat!\n\n• Kecepatan Motor (vt) = 5 m/s\n• Waktu yang diperlukan (t) = 6 sekon\n• Kode Kombinasi (5 + 6) = 11\n\nPintu Ruang Rahasia Kinematika Berhasil Terbuka!\n(Hasil Belajar Berhasil Dikirim ke Google Sheets)");
+                updateGlobalScore(); 
+                openReportModal();
             } else {
-                playBeep(180, 'sawtooth', 0.3); alert("❌ Kode Kombinasi Salah! s1 = 12m, s2 = 40m, stotal = 52m.");
+                playBeep(180, 'sawtooth', 0.3); 
+                alert("❌ Jawaban atau Kode Kombinasi Masih Salah!\n\n💡 Petunjuk Hitungan:\n- Kecepatan: vt² = v0² + 2as = 2² + 2(0,5)(21) = 25 → vt = 5 m/s\n- Waktu: vt = v0 + at → 5 = 2 + 0,5t → t = 6 sekon\n- Kode Brankas = Kecepatan + Waktu = 5 + 6 = 11");
             }
         }
 
@@ -1017,13 +1355,11 @@
             const total = state.scoreMisi1 + state.scoreMisi2 + state.scoreMisi3;
             document.getElementById('totalScore').innerText = total;
 
-            // Status Badge Misi 1
             if (state.m1Done) {
                 document.getElementById('badge-misi1').innerText = "Selesai ✓";
                 document.getElementById('badge-misi1').className = "text-xs px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-300 font-bold border border-emerald-500/30";
             }
 
-            // Status Badge Misi 2
             const badgeMisi2 = document.getElementById('badge-misi2');
             if (badgeMisi2) {
                 if (state.scoreMisi1 >= 80) {
@@ -1040,7 +1376,6 @@
                 }
             }
 
-            // Status Badge Misi 3
             if (state.m3Done) {
                 document.getElementById('badge-misi3').innerText = "Selesai ✓";
                 document.getElementById('badge-misi3').className = "text-xs px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-300 font-bold border border-emerald-500/30";
@@ -1048,10 +1383,14 @@
         }
 
         function openReportModal() {
-            state.studentName = document.getElementById('studentName').value || 'Penjelajah Muda';
+            state.studentName = document.getElementById('studentName').value || 'Ketik Nama Di Sini';
             document.getElementById('repName').innerText = state.studentName;
             document.getElementById('repDate').innerText = new Date().toLocaleDateString('id-ID');
             document.getElementById('repTotalScore').innerText = (state.scoreMisi1 + state.scoreMisi2 + state.scoreMisi3) + " XP";
+            
+            // MENGIRIM DATA SAAT MEMBUKA MODAL LAPORAN
+            sendDataToGoogleDrive();
+
             document.getElementById('reportModal').classList.remove('hidden');
         }
         function closeReportModal() { document.getElementById('reportModal').classList.add('hidden'); }
