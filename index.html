@@ -426,12 +426,12 @@
                                 </div>
                                 <div class="space-y-1.5 pt-2">
                                     <div class="flex gap-1.5">
-                                        <input type="text" id="ans_m2_t2" placeholder="Ketik benar atau salah" class="w-full bg-slate-950 px-2.5 py-1 rounded-lg text-white font-bold text-xs border border-slate-700 focus:border-emerald-400 focus:outline-none">
-                                        <button onclick="checkMisi2Task2()" class="px-3 py-1 bg-emerald-500 hover:bg-emerald-400 text-white font-bold text-xs rounded-lg transition shadow">Jawab</button>
-                                    </div>
-                                    <div id="fb_m2_t2" class="hidden text-[10px] font-bold p-1.5 rounded-lg"></div>
-                                </div>
-                            </div>
+                                        <input type="text" id="ans_m2_t2" placeholder="Ketik 'benar' atau 'salah'..." class="w-full bg-slate-950 px-2.5 py-1 rounded-lg text-white font-bold text-xs border border-slate-700 focus:border-emerald-400 focus:outline-none">
+            <button onclick="checkMisi2Task2()" class="px-3.5 py-1 bg-emerald-500 hover:bg-emerald-400 text-white font-bold text-xs rounded-lg transition shadow">Jawab</button>
+        </div>
+        <div id="fb_m2_t2" class="hidden text-[10px] font-bold p-1.5 rounded-lg"></div>
+    </div>
+</div>
 
                             <!-- TANTANGAN 3 (GLBB PENGEREMAN) -->
                             <div class="bg-slate-900/90 p-3.5 rounded-2xl border border-rose-500/40 space-y-2 flex flex-col justify-between">
@@ -767,26 +767,32 @@
         }
 
         function checkMisi2Task2() {
-            const ans = parseFloat(document.getElementById('ans_m2_t2').value);
-            const fb = document.getElementById('fb_m2_t2');
-            
-            // Pernyataan salah
-            if (ans === salah) {
-                playSuccessSound();
-                document.getElementById('chk_task2').checked = true; // OTOMATIS TERCENTANG!
-                document.getElementById('badge_t2').innerText = "Selesai ✓";
-                document.getElementById('badge_t2').className = "text-[10px] bg-emerald-500/20 px-2 py-0.5 rounded-md text-emerald-300 font-bold";
-                
-                fb.className = "text-[10px] font-bold p-1.5 rounded-lg bg-emerald-950 text-emerald-300 border border-emerald-500/40 block";
-                fb.innerText = "🎉 Benar! (pernyataan salah). Kotak 2 Tercentang!";
-                m2TaskState.t2 = true;
-                evaluateMisi2Progress();
-            } else {
-                playBeep(200, 'sawtooth', 0.2);
-                fb.className = "text-[10px] font-bold p-1.5 rounded-lg bg-rose-950 text-rose-300 border border-rose-500/40 block";
-                fb.innerText = "❌ Jawaban salah! Ulangi simulasi, dan perhatikan kemiringan grafik v terhadap t!";
-            }
-        }
+    const rawVal = document.getElementById('ans_m2_t2').value;
+    const ans = rawVal.toLowerCase().trim(); // Mengubah teks ke huruf kecil & menghapus spasi liar
+    const fb = document.getElementById('fb_m2_t2');
+    
+    if (ans === "") {
+        alert("Silakan ketik 'benar' atau 'salah' terlebih dahulu!");
+        return;
+    }
+
+    // Jawaban yang benar adalah "salah" (karena semakin besar percepatan, grafik v-t makin curam)
+    if (ans === "salah") {
+        playSuccessSound();
+        document.getElementById('chk_task2').checked = true; // OTOMATIS TERCENTANG!
+        document.getElementById('badge_t2').innerText = "Selesai ✓";
+        document.getElementById('badge_t2').className = "text-[10px] bg-emerald-500/20 px-2 py-0.5 rounded-md text-emerald-300 font-bold";
+        
+        fb.className = "text-[10px] font-bold p-1.5 rounded-lg bg-emerald-950 text-emerald-300 border border-emerald-500/40 block mt-2";
+        fb.innerText = "🎉 Benar! Pernyataan tersebut SALAH (seharusnya semakin besar percepatan, grafiknya semakin curam). Kotak Misi 2 Tercentang!";
+        m2TaskState.t2 = true;
+        evaluateMisi2Progress();
+    } else {
+        playBeep(200, 'sawtooth', 0.2);
+        fb.className = "text-[10px] font-bold p-1.5 rounded-lg bg-rose-950 text-rose-300 border border-rose-500/40 block mt-2";
+        fb.innerText = "❌ Kurang tepat! Ulangi simulasi, dan perhatikan grafik v-t!";
+    }
+}
 
         function checkMisi2Task3() {
             const ans = parseFloat(document.getElementById('ans_m2_t3').value);
