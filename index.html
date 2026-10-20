@@ -68,7 +68,7 @@
 
                 <div class="flex items-center space-x-2">
                     <i class="fa-solid fa-graduation-cap text-indigo-400"></i>
-                    <input type="text" id="studentClass" value="10E1" class="bg-transparent text-sm font-semibold text-slate-200 focus:outline-none focus:border-b focus:border-indigo-400 w-16 md:w-20" title="Klik untuk mengubah kelas">
+                    <input type="text" id="studentClass" value="Kelas, contoh XE5" class="bg-transparent text-sm font-semibold text-slate-200 focus:outline-none focus:border-b focus:border-indigo-400 w-16 md:w-20" title="Klik untuk mengubah kelas">
                 </div>
 
                 <div class="h-4 w-px bg-slate-700"></div>
@@ -123,16 +123,16 @@
                         </button>
                         
                         <!-- TOMBOL BUKA GAMBAR MATERI GLB -->
-                        <button onclick="openMateriModal('glb')" class="px-4 py-2.5 rounded-xl bg-sky-500/20 hover:bg-sky-500/30 text-sky-300 font-bold text-sm border border-sky-500/40 transition flex items-center gap-2 shadow">
+                        <button onclick="openMateriModul('glb')" class="px-4 py-2.5 rounded-xl bg-sky-500/20 hover:bg-sky-500/30 text-sky-300 font-bold text-sm border border-sky-500/40 transition flex items-center gap-2 shadow">
                             <i class="fa-solid fa-image text-sky-400"></i> Gambar Materi GLB
                         </button>
                         
                         <!-- TOMBOL BUKA GAMBAR MATERI GLBB -->
-                        <button onclick="openMateriModal('glbb')" class="px-4 py-2.5 rounded-xl bg-indigo-500/20 hover:bg-indigo-500/30 text-indigo-300 font-bold text-sm border border-indigo-500/40 transition flex items-center gap-2 shadow">
+                        <button onclick="openMateriModul('glbb')" class="px-4 py-2.5 rounded-xl bg-indigo-500/20 hover:bg-indigo-500/30 text-indigo-300 font-bold text-sm border border-indigo-500/40 transition flex items-center gap-2 shadow">
                             <i class="fa-solid fa-image text-indigo-400"></i> Gambar Materi GLBB
                         </button>
 
-                        <button onclick="openReportModal()" class="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-sm border border-slate-600 transition">
+                        <button onclick="openReportModul()" class="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-sm border border-slate-600 transition">
                             <i class="fa-solid fa-file-invoice mr-1 text-emerald-400"></i> Laporan Belajar
                         </button>
                     </div>
@@ -401,7 +401,7 @@
                                         <span id="badge_t1" class="text-[10px] bg-sky-500/20 px-2 py-0.5 rounded-md text-sky-300">Belum</span>
                                     </div>
                                     <p class="text-[11px] text-slate-300 leading-relaxed">
-                                        Klik <strong>Preset GLB</strong> (<span class="text-sky-300 font-bold">x₀ = 0m, v₀ = 15m/s, a = 0</span>). Berapa posisi mobil (x) setelah <span class="text-amber-300 font-bold">t = 4 sekon</span>?
+                                        Klik <strong>Preset GLB</strong> (<span class="text-sky-300 font-bold">x₀ = 0m, v₀ = 10m/s, a = 0</span>). Berapa posisi mobil (x) setelah <span class="text-amber-300 font-bold">t = 4 sekon</span>?
                                     </p>
                                 </div>
                                 <div class="space-y-1.5 pt-2">
@@ -421,12 +421,12 @@
                                         <span id="badge_t2" class="text-[10px] bg-emerald-500/20 px-2 py-0.5 rounded-md text-emerald-300">Belum</span>
                                     </div>
                                     <p class="text-[11px] text-slate-300 leading-relaxed">
-                                        Klik <strong>Preset Dipercepat</strong> (<span class="text-emerald-300 font-bold">x₀ = 0m, v₀ = 5m/s, a = 3m/s²</span>). Berapa posisi mobil (x) setelah <span class="text-amber-300 font-bold">t = 4 sekon</span>?
+                                        Klik <strong>Preset Dipercepat</strong> (<span class="text-emerald-300 font-bold">atur x₀ = 0m, v₀ = 5m/s, dan ubah-ubah nilai percepatan</span>). Dari hasil analisis grafik yang muncul, semakin kecil percepatan, maka semakin curam grafiknya. <span class="text-amber-300 font-bold"> Pernyataan benar atau <span class="text-amber-300 font-bold">salah</span>?
                                     </p>
                                 </div>
                                 <div class="space-y-1.5 pt-2">
                                     <div class="flex gap-1.5">
-                                        <input type="number" id="ans_m2_t2" placeholder="meter..." class="w-full bg-slate-950 px-2.5 py-1 rounded-lg text-white font-bold text-xs border border-slate-700 focus:border-emerald-400 focus:outline-none">
+                                        <input type="text" id="ans_m2_t2" placeholder="Ketik benar atau salah" class="w-full bg-slate-950 px-2.5 py-1 rounded-lg text-white font-bold text-xs border border-slate-700 focus:border-emerald-400 focus:outline-none">
                                         <button onclick="checkMisi2Task2()" class="px-3 py-1 bg-emerald-500 hover:bg-emerald-400 text-white font-bold text-xs rounded-lg transition shadow">Jawab</button>
                                     </div>
                                     <div id="fb_m2_t2" class="hidden text-[10px] font-bold p-1.5 rounded-lg"></div>
@@ -441,7 +441,7 @@
                                         <span id="badge_t3" class="text-[10px] bg-rose-500/20 px-2 py-0.5 rounded-md text-rose-300">Belum</span>
                                     </div>
                                     <p class="text-[11px] text-slate-300 leading-relaxed">
-                                        Klik <strong>Preset Pengereman</strong> (<span class="text-rose-300 font-bold">x₀ = 0m, v₀ = 20m/s, a = -4m/s²</span>). Berapa posisi mobil (x) saat mobil <span class="text-amber-300 font-bold">tepat berhenti (v = 0)</span>?
+                                        Klik <strong>Preset Pengereman</strong> (<span class="text-rose-300 font-bold">x₀ = 0m, v₀ = 20m/s, a = -4m/s²</span>). Perhatikan grafik kecepatan vs waktu. Berapa posisi mobil (x) saat mobil <span class="text-amber-300 font-bold">tepat berhenti (v = 0)</span>?
                                     </p>
                                 </div>
                                 <div class="space-y-1.5 pt-2">
@@ -585,8 +585,8 @@
 
     </main>
 
-    <!-- MODAL MATERI GLB & GLBB (MENAMPILKAN GAMBAR FORMULA VECTOR SVG) -->
-    <div id="materiModal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+    <!-- MODUL MATERI GLB & GLBB (MENAMPILKAN GAMBAR FORMULA VECTOR SVG) -->
+    <div id="materiModul" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
         <div class="glass-panel max-w-2xl w-full p-6 rounded-3xl border border-sky-500/40 shadow-2xl space-y-5 max-h-[90vh] overflow-y-auto">
             <div class="flex justify-between items-center border-b border-slate-700 pb-3">
                 <div class="flex items-center space-x-3">
@@ -598,7 +598,7 @@
                         <p class="text-xs text-slate-400">Gambar Rumus & Konsep Ringkas Fisika</p>
                     </div>
                 </div>
-                <button onclick="closeMateriModal()" class="text-slate-400 hover:text-white text-lg p-1"><i class="fa-solid fa-xmark"></i></button>
+                <button onclick="closeMateriModul()" class="text-slate-400 hover:text-white text-lg p-1"><i class="fa-solid fa-xmark"></i></button>
             </div>
             
             <div id="materiContent" class="space-y-4 text-xs leading-relaxed text-slate-300">
@@ -606,13 +606,13 @@
             </div>
 
             <div class="flex justify-end pt-2">
-                <button onclick="closeMateriModal()" class="px-5 py-2.5 rounded-xl bg-sky-500 hover:bg-sky-400 text-white font-bold text-xs shadow-md transition">Tutup Modal</button>
+                <button onclick="closeMateriModul()" class="px-5 py-2.5 rounded-xl bg-sky-500 hover:bg-sky-400 text-white font-bold text-xs shadow-md transition">Tutup Modul</button>
             </div>
         </div>
     </div>
 
-    <!-- REPORT MODAL -->
-    <div id="reportModal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+    <!-- REPORT MODuL -->
+    <div id="reportModul" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
         <div class="glass-panel max-w-2xl w-full p-6 rounded-3xl border border-sky-500/40 shadow-2xl space-y-6 max-h-[90vh] overflow-y-auto">
             <div class="flex justify-between items-center border-b border-slate-700 pb-3">
                 <div class="flex items-center space-x-3">
@@ -622,7 +622,7 @@
                         <p class="text-xs text-slate-400">Escape Room Gerak Lurus • SMAN 1 Pasawahan</p>
                     </div>
                 </div>
-                <button onclick="closeReportModal()" class="text-slate-400 hover:text-white text-lg p-1"><i class="fa-solid fa-xmark"></i></button>
+                <button onclick="closeReportModul()" class="text-slate-400 hover:text-white text-lg p-1"><i class="fa-solid fa-xmark"></i></button>
             </div>
             <div id="reportContent" class="space-y-4 text-xs">
                 <div class="bg-slate-900/80 p-4 rounded-2xl border border-slate-800 space-y-2">
@@ -646,7 +646,7 @@
             </div>
             <div class="flex justify-end space-x-3 pt-2">
                 <button onclick="window.print()" class="px-5 py-2.5 rounded-xl bg-slate-800 text-slate-200 font-bold text-xs border border-slate-600">Cetak / Simpan PDF</button>
-                <button onclick="closeReportModal()" class="px-5 py-2.5 rounded-xl bg-sky-500 text-white font-bold text-xs">Tutup</button>
+                <button onclick="closeReportModul()" class="px-5 py-2.5 rounded-xl bg-sky-500 text-white font-bold text-xs">Tutup</button>
             </div>
         </div>
     </div>
@@ -748,21 +748,21 @@
             const ans = parseFloat(document.getElementById('ans_m2_t1').value);
             const fb = document.getElementById('fb_m2_t1');
             
-            // x = x0 + v0*t = 0 + 15*4 = 60m
-            if (ans === 60) {
+            // x = x0 + v0*t = 0 + 10*4 = 40m
+            if (ans === 40) {
                 playSuccessSound();
                 document.getElementById('chk_task1').checked = true; // OTOMATIS TERCENTANG!
                 document.getElementById('badge_t1').innerText = "Selesai ✓";
                 document.getElementById('badge_t1').className = "text-[10px] bg-emerald-500/20 px-2 py-0.5 rounded-md text-emerald-300 font-bold";
                 
                 fb.className = "text-[10px] font-bold p-1.5 rounded-lg bg-emerald-950 text-emerald-300 border border-emerald-500/40 block";
-                fb.innerText = "🎉 Benar! (x = 60 m). Kotak 1 Tercentang!";
+                fb.innerText = "🎉 Benar! (x = 40 m). Kotak 1 Tercentang!";
                 m2TaskState.t1 = true;
                 evaluateMisi2Progress();
             } else {
                 playBeep(200, 'sawtooth', 0.2);
                 fb.className = "text-[10px] font-bold p-1.5 rounded-lg bg-rose-950 text-rose-300 border border-rose-500/40 block";
-                fb.innerText = "❌ Kurang tepat! s = v × t = 15 × 4. Coba lagi!";
+                fb.innerText = "❌ Kurang tepat! Ulangi simulasi. Pause saat t = 4 sekon. Perhatikan nilai posisi!";
             }
         }
 
@@ -770,21 +770,21 @@
             const ans = parseFloat(document.getElementById('ans_m2_t2').value);
             const fb = document.getElementById('fb_m2_t2');
             
-            // x = 0 + 5(4) + 0.5(3)(16) = 20 + 24 = 44m
-            if (ans === 44) {
+            // Pernyataan salah
+            if (ans === salah) {
                 playSuccessSound();
                 document.getElementById('chk_task2').checked = true; // OTOMATIS TERCENTANG!
                 document.getElementById('badge_t2').innerText = "Selesai ✓";
                 document.getElementById('badge_t2').className = "text-[10px] bg-emerald-500/20 px-2 py-0.5 rounded-md text-emerald-300 font-bold";
                 
                 fb.className = "text-[10px] font-bold p-1.5 rounded-lg bg-emerald-950 text-emerald-300 border border-emerald-500/40 block";
-                fb.innerText = "🎉 Benar! (x = 44 m). Kotak 2 Tercentang!";
+                fb.innerText = "🎉 Benar! (pernyataan salah). Kotak 2 Tercentang!";
                 m2TaskState.t2 = true;
                 evaluateMisi2Progress();
             } else {
                 playBeep(200, 'sawtooth', 0.2);
                 fb.className = "text-[10px] font-bold p-1.5 rounded-lg bg-rose-950 text-rose-300 border border-rose-500/40 block";
-                fb.innerText = "❌ Salah! s = v₀·t + ½·a·t² = 5(4) + ½(3)(16). Coba lagi!";
+                fb.innerText = "❌ Jawaban salah! Ulangi simulasi, dan perhatikan kemiringan grafik v terhadap t!";
             }
         }
 
@@ -806,7 +806,7 @@
             } else {
                 playBeep(200, 'sawtooth', 0.2);
                 fb.className = "text-[10px] font-bold p-1.5 rounded-lg bg-rose-950 text-rose-300 border border-rose-500/40 block";
-                fb.innerText = "❌ Salah! Waktu t=5s (20/4), x = 20(5) - ½(4)(25) = 50m.";
+                fb.innerText = "❌ Salah! Ulangi simulasi, perhatikan grafik v terhadap t, pause saat grafik mencapai titik koordinat x atau saat v=0.";
             }
         }
 
@@ -825,8 +825,8 @@
             updateGlobalScore();
         }
 
-        // FUNGSI MODAL MATERI DENGAN GAMBAR RUMUS VEKTOR SVG LENGKAP
-        function openMateriModal(type) {
+        // FUNGSI MODUL MATERI DENGAN GAMBAR RUMUS VEKTOR SVG LENGKAP
+        function openMateriModul(type) {
             const titleEl = document.getElementById('materiTitle');
             const iconEl = document.getElementById('materiIcon');
             const contentEl = document.getElementById('materiContent');
@@ -926,11 +926,11 @@
                 `;
             }
 
-            document.getElementById('materiModal').classList.remove('hidden');
+            document.getElementById('materiModul').classList.remove('hidden');
         }
 
-        function closeMateriModal() {
-            document.getElementById('materiModal').classList.add('hidden');
+        function closeMateriModul() {
+            document.getElementById('materiModul').classList.add('hidden');
         }
 
         // --- MISI 1 (VIDEO LOGIC) ---
@@ -1344,7 +1344,7 @@
 
                 alert("🎉 SELAMAT! Jawabanmu Tepat!\n\n• Kecepatan Motor (vt) = 5 m/s\n• Waktu yang diperlukan (t) = 6 sekon\n• Kode Kombinasi (5 + 6) = 11\n\nPintu Ruang Rahasia Kinematika Berhasil Terbuka!\n(Hasil Belajar Berhasil Dikirim ke Google Sheets)");
                 updateGlobalScore(); 
-                openReportModal();
+                openReportModul();
             } else {
                 playBeep(180, 'sawtooth', 0.3); 
                 alert("❌ Jawaban atau Kode Kombinasi Masih Salah!\n\n💡 Petunjuk Hitungan:\n- Kecepatan: vt² = v0² + 2as = 2² + 2(0,5)(21) = 25 → vt = 5 m/s\n- Waktu: vt = v0 + at → 5 = 2 + 0,5t → t = 6 sekon\n- Kode Brankas = Kecepatan + Waktu = 5 + 6 = 11");
@@ -1382,18 +1382,18 @@
             }
         }
 
-        function openReportModal() {
+        function openReportModul() {
             state.studentName = document.getElementById('studentName').value || 'Ketik Nama Di Sini';
             document.getElementById('repName').innerText = state.studentName;
             document.getElementById('repDate').innerText = new Date().toLocaleDateString('id-ID');
             document.getElementById('repTotalScore').innerText = (state.scoreMisi1 + state.scoreMisi2 + state.scoreMisi3) + " XP";
             
-            // MENGIRIM DATA SAAT MEMBUKA MODAL LAPORAN
+            // MENGIRIM DATA SAAT MEMBUKA MODUL LAPORAN
             sendDataToGoogleDrive();
 
-            document.getElementById('reportModal').classList.remove('hidden');
+            document.getElementById('reportModul').classList.remove('hidden');
         }
-        function closeReportModal() { document.getElementById('reportModal').classList.add('hidden'); }
+        function closeReportModul() { document.getElementById('reportModul').classList.add('hidden'); }
 
         window.addEventListener('load', () => {
             initLocalVideoPlayer();
